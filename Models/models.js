@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { model, Schema } from "mongoose";
 
 
 const userSchema = new Schema({
@@ -16,5 +16,15 @@ const userSchema = new Schema({
 
 const projectSchema = new Schema({
     projectname:String,
-    
+    user:{
+        type:Schema.Types.ObjectId,
+        ref:"users",
+    }
+},{
+    versionKey:false,
+    timestamps:true
 })
+
+
+export const userModel = model("users",userSchema)
+export const projectModel = model("projects",projectSchema)
