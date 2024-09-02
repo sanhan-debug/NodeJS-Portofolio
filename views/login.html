@@ -10,22 +10,15 @@
   <link rel="stylesheet" href="css2/style.css">
 </head>
 <body>
-    <div class="nav-links">
-        <a class="nav-link" href="/register">Register</a>
-        <a class="nav-link" href="/login">login</a>
-        <a class="nav-link" href="/new-project">Add Project</a>
-        <a class="nav-link" href="#projects">Projects</a>
-        <a class="nav-link" href="#contact">Contact</a>
-      </div>
   <div class="container">
     <input type="checkbox" id="check">
     <div class="login form">
       <header>Login</header>
-      <form>
-        <input type="text" placeholder="Enter your email" name="email">
+      <form action="/login" method="post" enctype="application/x-www-form-urlencoded"> 
+        <input type="text" placeholder="Enter your username" name="username">
         <input type="password" placeholder="Enter your password" name="password">
         <a href="#">Forgot password?</a>
-        <input type="button" class="button" value="Login">
+        <input type="submit" class="button" value="Login">
       </form>
       <div class="signup">
         <span class="signup">Don't have an account?
