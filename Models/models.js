@@ -21,6 +21,7 @@ const projectSchema = new Schema({
         ref: "users",
     },
     description: String,
+    photo: String,
 }, {
     versionKey: false,
     timestamps: true

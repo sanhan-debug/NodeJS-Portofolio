@@ -21,10 +21,11 @@
     <input type="checkbox" id="check">
     <div class="login form">
       <header>Add Project</header>
-      <form>
-        <input type="text" placeholder="Enter your project name" name="project">
-        <input type="file" placeholder="Enter your projcet image" name="image" id="avatar2">
-        <input type="button" class="button" value="Submit">
+      <form action="/new-project" method="post" enctype="multipart/form-data">
+        <input type="text" placeholder="Enter your projectname" name="projectname">
+        <input type="text" placeholder="Enter your description" name="description">        
+        <input type="file" placeholder="Enter your projcet image" name="photo">
+        <input type="submit" class="button" value="Submit">
       </form>
     </div>
   </div>
