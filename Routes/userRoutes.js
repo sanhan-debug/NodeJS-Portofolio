@@ -45,7 +45,7 @@ userRoute.post('/login', async (req, res) => {
     if (user) {
         const match = await bcrypt.compare(password, user.password)
         if (match) {
-            const token = jwt.sign({ user }, SECRET_KEY)
+            // const token = jwt.sign({ user }, SECRET_KEY)
             // res.send(token)
             res.render('profile',{user})
         } else {
@@ -58,22 +58,20 @@ userRoute.post('/login', async (req, res) => {
 })
 
 
-userRoute.post('/new-project',authenticateUser ,customizedMulter.single('photo'), async (req, res) => {
+userRoute.post('/new-project' ,customizedMulter.single('photo'), async (req, res) => {
     try {
         const { projectname, description } = req.body;
-        const userId = req.user.id; // req.user middleware-dən alınmış user məlumatıdır
+        const userId = req.user; 
         const photo = req.file 
 
         if (projectname && description) {
-            const newProject = new Project({
+            const project = projectModel.create({
                 projectname,
                 description,
-                photo,
-                userId
-            });
-    
-            await newProject.save();
-            res.status(201).send(newProject);
+                userId,
+                photo
+            })
+            res.status(201).send(project)
         }else{
             return res.status(400).send('Project name və description tələb olunur');
         }
