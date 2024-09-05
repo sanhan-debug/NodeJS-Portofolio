@@ -41,7 +41,6 @@ userRoute.post('/login', async (req, res) => {
     const user = await userModel.findOne({ username })
     const SECRET_KEY = process.env.SECRET_KEY
 
-
     if (user) {
         const match = await bcrypt.compare(password, user.password)
         if (match) {
@@ -61,7 +60,7 @@ userRoute.post('/login', async (req, res) => {
 userRoute.post('/new-project' ,customizedMulter.single('photo'), async (req, res) => {
     try {
         const { projectname, description } = req.body;
-        const userId = req.user; 
+        const userId = req.user._id; 
         const photo = req.file 
 
         if (projectname && description) {
